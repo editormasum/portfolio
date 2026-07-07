@@ -89,7 +89,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .anim-r.on{opacity:1;transform:none}
 
 /* ──────────── CURSOR GLOW ──────────── */
-.cursor-glow{position:fixed;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);opacity:0;transition:opacity .4s}
+.cursor-glow{position:fixed;top:0;left:0;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);opacity:0;transition:opacity .4s}
 .cursor-glow.on{opacity:1}
 
 /* ====================================================================
@@ -243,6 +243,11 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .card__info h4{font:600 .88rem/1.3 var(--ff-h);margin-bottom:3px}
 .card__info span{font-size:.75rem;font-weight:500;color:var(--amber)}
 
+/* Inline Video Playback */
+.card.is-playing{overflow:visible;cursor:default}
+.card.is-playing .card__thumb{overflow:visible}
+.card.is-playing iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:var(--r-lg) var(--r-lg) 0 0;z-index:2}
+
 /* ====================================================================
    CONTACT
    ==================================================================== */
@@ -276,23 +281,7 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .footer__socials a:hover{background:var(--em);color:#fff;border-color:var(--em);transform:translateY(-3px);box-shadow:0 0 18px rgba(16,185,129,.25)}
 .footer__copy{font-size:.8rem;color:var(--t3);padding-top:20px;border-top:1px solid rgba(255,255,255,.03)}
 
-/* ====================================================================
-   VIDEO MODAL
-   ==================================================================== */
-.modal{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s}
-.modal.open{pointer-events:auto;opacity:1;visibility:visible}
-.modal__bg{position:absolute;inset:0;background:rgba(0,0,0,.96)}
-.modal__box{position:relative;width:90%;max-width:920px;transform:scale(.92);transition:transform .35s var(--spring)}
-.modal.open .modal__box{transform:none}
-.modal__x{position:absolute;top:-44px;right:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border-radius:50%;color:#fff;font-size:.95rem;transition:all var(--fast);z-index:1}
-.modal__x:hover{background:var(--em);transform:rotate(90deg)}
-.modal__player{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:var(--r-lg);border:2px solid rgba(16,185,129,.22);background:#000}
 
-.modal__box--short{max-width:380px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:40px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.modal__box--short .modal__player{padding-bottom:177.78%;border:none;border-radius:26px}
-.modal__box--short .modal__x{top:-16px;right:-16px;background:var(--em);color:#000;box-shadow:0 4px 16px rgba(16,185,129,.4)}
-.modal__box--short .modal__x:hover{background:#fff}
-.modal__player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:inherit}
 
 /* ====================================================================
    RESPONSIVE

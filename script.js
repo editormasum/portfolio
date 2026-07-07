@@ -18,7 +18,6 @@
         setupTabs();
         setupShowreel();
         setupVideoCards();
-        setupModal();
         setupSmoothScroll();
         setupParallax();
         triggerHeroAnimations();
@@ -30,7 +29,7 @@
         if (!canvas) return;
         var ctx = canvas.getContext('2d');
         var squares = [];
-        var count = 30; // Increased count for full page
+        var count = 20; // Optimized count for performance
 
         function resize() {
             canvas.width = window.innerWidth;
@@ -123,8 +122,7 @@
             if (!document.body.classList.contains('video-playing')) {
                 gx += (mx - gx) * 0.07;
                 gy += (my - gy) * 0.07;
-                glow.style.left = gx + 'px';
-                glow.style.top = gy + 'px';
+                glow.style.transform = 'translate3d(' + gx + 'px, ' + gy + 'px, 0) translate(-50%, -50%)';
             }
             requestAnimationFrame(loop);
         })();
@@ -274,71 +272,23 @@
             card.addEventListener('click', function (e) {
                 e.preventDefault();
                 var videoId = card.getAttribute('data-vid');
-                var videoType = card.getAttribute('data-type');
-                if (!videoId) return;
-                openModal(videoId, videoType);
+                if (!videoId || card.classList.contains('is-playing')) return;
+                
+                card.classList.add('is-playing');
+                document.body.classList.add('video-playing');
+                
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+                iframe.title = 'Video Player';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowFullscreen = true;
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                
+                var thumb = card.querySelector('.card__thumb');
+                thumb.innerHTML = '';
+                thumb.appendChild(iframe);
             });
         });
-    }
-
-    /* ──────────── MODAL ──────────── */
-    function setupModal() {
-        var modal = document.getElementById('modal');
-        var bg = document.getElementById('modalBg');
-        var closeBtn = document.getElementById('modalX');
-
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (bg) bg.addEventListener('click', closeModal);
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeModal();
-        });
-    }
-
-    function openModal(videoId, type) {
-        var modal = document.getElementById('modal');
-        var player = document.getElementById('modalPlayer');
-        if (!modal || !player) return;
-
-        var modalBox = modal.querySelector('.modal__box');
-
-        // Show modal with embedded iframe directly
-        if (type === 'short') {
-            modalBox.classList.add('modal__box--short');
-        } else {
-            modalBox.classList.remove('modal__box--short');
-        }
-
-        var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
-
-        player.innerHTML = '<iframe src="' + embedUrl + '" title="Video" ' +
-            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-            'allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
-
-        document.body.classList.add('video-playing');
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        var modal = document.getElementById('modal');
-        var player = document.getElementById('modalPlayer');
-        if (!modal) return;
-
-        var modalBox = modal.querySelector('.modal__box');
-        
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-        document.body.classList.remove('video-playing');
-
-        setTimeout(function () {
-            if (player) {
-                player.innerHTML = '';
-            }
-            if (modalBox) {
-                modalBox.classList.remove('modal__box--short');
-            }
-        }, 300);
     }
 
     /* ──────────── SMOOTH SCROLL ──────────── */

@@ -163,24 +163,12 @@
             </header>
 
             <div class="tabs anim-r" id="tabs">
-                <button class="tab tab--on" data-t="reels"><i class="fas fa-mobile-alt"></i> Reels</button>
-                <button class="tab" data-t="long"><i class="fas fa-desktop"></i> Long Form</button>
-            </div>
-
-            <!-- Reels Grid -->
-            <div class="grid grid--reels grid--on" id="gridReels">
-                <article class="card card--v anim-r" data-vid="_xSFEq5zvb8" data-type="short">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/_xSFEq5zvb8/hqdefault.jpg" alt="High-Retention Short" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
-                    <div class="card__info"><h4>High-Retention Short</h4><span>Reels & Shorts</span></div>
-                </article>
-                <article class="card card--v anim-r" data-vid="EiIyAG14uuU" data-type="short">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/EiIyAG14uuU/hqdefault.jpg" alt="Engaging Hook Reel" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
-                    <div class="card__info"><h4>Engaging Hook Reel</h4><span>Reels & Shorts</span></div>
-                </article>
+                <button class="tab tab--on" data-t="long"><i class="fas fa-desktop"></i> Long Form</button>
+                <button class="tab" data-t="reels"><i class="fas fa-mobile-alt"></i> Reels</button>
             </div>
 
             <!-- Long Form Grid -->
-            <div class="grid grid--long" id="gridLong">
+            <div class="grid grid--long grid--on" id="gridLong">
                 <article class="card card--h anim-r" data-vid="0sVdNHdhyLA" data-type="long">
                     <div class="card__thumb"><img src="https://i.ytimg.com/vi/0sVdNHdhyLA/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/0sVdNHdhyLA/hqdefault.jpg'" alt="Cinematic Talking Head" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
                     <div class="card__info"><h4>Cinematic Talking Head</h4><span>YouTube</span></div>
@@ -214,6 +202,20 @@
                     <div class="card__info"><h4>Brand Authority Video</h4><span>YouTube</span></div>
                 </article>
             </div>
+
+            <!-- Reels Grid -->
+            <div class="grid grid--reels" id="gridReels">
+                <article class="card card--v anim-r" data-vid="_xSFEq5zvb8" data-type="short">
+                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/_xSFEq5zvb8/hqdefault.jpg" alt="High-Retention Short" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
+                    <div class="card__info"><h4>High-Retention Short</h4><span>Reels & Shorts</span></div>
+                </article>
+                <article class="card card--v anim-r" data-vid="EiIyAG14uuU" data-type="short">
+                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/EiIyAG14uuU/hqdefault.jpg" alt="Engaging Hook Reel" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
+                    <div class="card__info"><h4>Engaging Hook Reel</h4><span>Reels & Shorts</span></div>
+                </article>
+            </div>
+
+
         </div>
     </section>
 
@@ -262,14 +264,7 @@
         </div>
     </footer>
 
-    <!-- ===== VIDEO MODAL ===== -->
-    <div class="modal" id="modal">
-        <div class="modal__bg" id="modalBg"></div>
-        <div class="modal__box">
-            <button class="modal__x" id="modalX" aria-label="Close video"><i class="fas fa-times"></i></button>
-            <div class="modal__player" id="modalPlayer"></div>
-        </div>
-    </div>
+
 
     <script src="script.js"></script>
 </body>
