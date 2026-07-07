@@ -57,10 +57,6 @@
         }
 
         function draw() {
-            if (document.body.classList.contains('video-playing')) {
-                requestAnimationFrame(draw);
-                return;
-            }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             for (var i = 0; i < squares.length; i++) {
@@ -119,11 +115,9 @@
         });
 
         (function loop() {
-            if (!document.body.classList.contains('video-playing')) {
-                gx += (mx - gx) * 0.07;
-                gy += (my - gy) * 0.07;
-                glow.style.transform = 'translate3d(' + gx + 'px, ' + gy + 'px, 0) translate(-50%, -50%)';
-            }
+            gx += (mx - gx) * 0.07;
+            gy += (my - gy) * 0.07;
+            glow.style.transform = 'translate3d(' + gx + 'px, ' + gy + 'px, 0) translate(-50%, -50%)';
             requestAnimationFrame(loop);
         })();
     }
@@ -261,8 +255,6 @@
             if (thumb) thumb.style.display = 'none';
             if (playBtn) playBtn.style.display = 'none';
             frame.appendChild(iframe);
-            
-            document.body.classList.add('video-playing');
         });
     }
 
@@ -275,7 +267,6 @@
                 if (!videoId || card.classList.contains('is-playing')) return;
                 
                 card.classList.add('is-playing');
-                document.body.classList.add('video-playing');
                 
                 var iframe = document.createElement('iframe');
                 iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
