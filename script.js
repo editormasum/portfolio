@@ -27,6 +27,10 @@
     function setupAnimatedSquares() {
         var canvas = document.getElementById('bgSquares');
         if (!canvas) return;
+        if (window.innerWidth <= 768) {
+            canvas.style.display = 'none';
+            return; // Disable intensive canvas on mobile
+        }
         var ctx = canvas.getContext('2d');
         var squares = [];
         var count = 20; // Optimized count for performance
@@ -106,7 +110,10 @@
     /* ──────────── CURSOR GLOW ──────────── */
     function setupCursorGlow() {
         var glow = document.getElementById('cursorGlow');
-        if (!glow) return;
+        if (!glow || window.matchMedia('(hover: none) and (pointer: coarse)').matches) {
+            if (glow) glow.style.display = 'none';
+            return; // Disable on touch devices
+        }
         var mx = 0, my = 0, gx = 0, gy = 0;
 
         document.addEventListener('mousemove', function (e) {
@@ -311,7 +318,7 @@
     /* ──────────── PARALLAX AMBIENT GLOWS ──────────── */
     function setupParallax() {
         var glows = document.querySelectorAll('.hero__glow');
-        if (!glows.length) return;
+        if (!glows.length || window.innerWidth <= 768) return; // Disable parallax on mobile
 
         window.addEventListener('scroll', function () {
             var sy = window.scrollY;
