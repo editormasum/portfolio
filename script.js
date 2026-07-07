@@ -292,11 +292,13 @@
         var player = document.getElementById('modalPlayer');
         if (!modal || !player) return;
 
+        var modalBox = modal.querySelector('.modal__box');
+
         // Show modal with embedded iframe directly
         if (type === 'short') {
-            player.classList.add('modal__player--short');
+            modalBox.classList.add('modal__box--short');
         } else {
-            player.classList.remove('modal__player--short');
+            modalBox.classList.remove('modal__box--short');
         }
 
         var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
@@ -314,13 +316,17 @@
         var player = document.getElementById('modalPlayer');
         if (!modal) return;
 
+        var modalBox = modal.querySelector('.modal__box');
+        
         modal.classList.remove('open');
         document.body.style.overflow = '';
 
         setTimeout(function () {
             if (player) {
                 player.innerHTML = '';
-                player.classList.remove('modal__player--short');
+            }
+            if (modalBox) {
+                modalBox.classList.remove('modal__box--short');
             }
         }, 300);
     }
