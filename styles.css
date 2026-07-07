@@ -82,11 +82,11 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .btn--outline:hover{background:var(--em-sub);border-color:rgba(16,185,129,.45);transform:translateY(-2px)}
 .btn--wide{width:100%;justify-content:center}
 
-/* ──────────── REVEAL ──────────── */
-.anim{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.anim.on{opacity:1;transform:translateY(0)}
-.anim-r{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.anim-r.on{opacity:1;transform:translateY(0)}
+/* ──────────── ANIMATIONS ──────────── */
+.anim{opacity:0;transform:translateY(20px);transition:all .7s var(--ease)}
+.anim.on{opacity:1;transform:none}
+.anim-r{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.anim-r.on{opacity:1;transform:none}
 
 /* ──────────── CURSOR GLOW ──────────── */
 .cursor-glow{position:fixed;width:550px;height:550px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.05) 0%,transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);opacity:0;transition:opacity .4s}
@@ -170,7 +170,8 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .showreel{padding:var(--sp) 0;position:relative}
 .showreel__wrap{position:relative;max-width:900px;margin:0 auto}
 .showreel__glow{position:absolute;inset:-36px;background:radial-gradient(ellipse,var(--em-glow) 0%,transparent 70%);filter:blur(36px);opacity:.25;border-radius:var(--r-xl);z-index:0}
-.showreel__frame{position:relative;z-index:1;border-radius:var(--r-xl);overflow:hidden;border:2px solid rgba(16,185,129,.16);box-shadow:var(--g3);background:#000;cursor:pointer;aspect-ratio:16/9}
+.showreel__frame{position:relative;z-index:1;border-radius:var(--r-xl);border:2px solid rgba(16,185,129,.16);box-shadow:var(--g3);background:#000;cursor:pointer;aspect-ratio:16/9}
+.showreel__frame iframe, .showreel__frame img{border-radius:inherit}
 .showreel__thumb{width:100%;height:100%;object-fit:cover;transition:all .5s var(--ease);filter:brightness(.85)}
 .showreel__frame:hover .showreel__thumb{filter:brightness(1);transform:scale(1.02)}
 .showreel__play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:linear-gradient(135deg,var(--em),var(--em-d));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;box-shadow:0 0 40px var(--em-glow);transition:all .3s var(--spring);z-index:2;border:none;cursor:pointer}
@@ -285,13 +286,13 @@ button{background:none;border:none;cursor:pointer;font:inherit;color:inherit}
 .modal.open .modal__box{transform:none}
 .modal__x{position:absolute;top:-44px;right:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border-radius:50%;color:#fff;font-size:.95rem;transition:all var(--fast);z-index:1}
 .modal__x:hover{background:var(--em);transform:rotate(90deg)}
-.modal__player{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:var(--r-lg);overflow:hidden;border:2px solid rgba(16,185,129,.22);background:#000}
+.modal__player{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:var(--r-lg);border:2px solid rgba(16,185,129,.22);background:#000}
 
 .modal__box--short{max-width:380px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:40px;padding:16px;box-shadow:0 30px 80px rgba(0,0,0,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .modal__box--short .modal__player{padding-bottom:177.78%;border:none;border-radius:26px}
 .modal__box--short .modal__x{top:-16px;right:-16px;background:var(--em);color:#000;box-shadow:0 4px 16px rgba(16,185,129,.4)}
 .modal__box--short .modal__x:hover{background:#fff}
-.modal__player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.modal__player iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:inherit}
 
 /* ====================================================================
    RESPONSIVE
