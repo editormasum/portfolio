@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# VS Code (optional, but usually good to ignore local settings unless shared)
+.vscode/
+
+# Node modules (just in case you add npm packages later)
+node_modules/
+npm-debug.log
+
+# Other IDEs
+.idea/
+*.swp
+*.swo
+
+# Temporary Working Files
+code.html
+screen.png
+DESIGN.md
