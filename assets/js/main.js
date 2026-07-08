@@ -507,3 +507,31 @@
     }
   });
 })();
+window.addEventListener("load", () => {
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  async function demoScroll() {
+    // Wait for page animations
+    await delay(1500);
+
+    // Scroll to bottom smoothly
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+
+    // Wait until scrolling finishes
+    await delay(9000);
+
+    // Stay at the bottom
+    await delay(2000);
+
+    // Scroll back to hero section
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  demoScroll();
+});
