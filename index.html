@@ -1,271 +1,700 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masum | Premium Video Editor — High-Retention Reels & Cinematic YouTube</title>
-    <meta name="description" content="Professional video editing by Masum. Specializing in high-retention Reels, cinematic YouTube editing, and premium short-form content that drives massive growth.">
-    <meta name="keywords" content="video editor, video editing, reels editor, youtube editor, cinematic editing, short form content">
-    <meta name="author" content="Masum">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta property="og:title" content="Masum | Premium Video Editor">
-    <meta property="og:description" content="High-retention Reels & cinematic YouTube videos that build authority and drive growth.">
-    <meta property="og:type" content="website">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07080C">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+<title>Masum — Premium Video Editor | High-Retention Reels &amp; Cinematic YouTube</title>
+<meta name="description" content="I'm Masum, a video editor for coaches, creators and brands. High-retention Reels and cinematic YouTube edits engineered to hold attention and drive growth.">
+<meta name="author" content="Masum">
+
+<!-- ═══ ONCE YOU HAVE A DOMAIN, DO THESE TWO THINGS ═══════════════════════
+     1. Uncomment the canonical tag below and set it to your real URL.
+        Leave it commented until then — a canonical pointing at the wrong
+        domain tells Google to deindex this page.
+     2. Replace BOTH "https://YOUR-DOMAIN.com" strings in og:image / og:url.
+        Social crawlers (Facebook, LinkedIn, WhatsApp, X) will not follow a
+        relative image path — the link preview renders with no image.
+     ══════════════════════════════════════════════════════════════════════ -->
+<!-- <link rel="canonical" href="https://YOUR-DOMAIN.com/"> -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Masum — Premium Video Editor">
+<meta property="og:description" content="High-retention Reels and cinematic YouTube edits that build authority and drive growth.">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/assets/img/portrait.png">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Reveal animations start at opacity:0, but ONLY under html.js — so with
+     JavaScript disabled this inline script never runs and the page renders
+     fully visible.
+
+     The failsafe below covers the nastier case: JS is enabled, this script
+     runs, but main.js then 404s, throws, or hits a browser without
+     IntersectionObserver. Without it the whole page would stay invisible —
+     which is precisely how the previous build of this site broke. If reveal
+     hasn't reported ready within 2s, we drop the flag and show everything. -->
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add('js');
+  setTimeout(function () {
+    if (!window.__revealReady) d.classList.remove('js');
+  }, 2000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- The portrait is the LCP element; start it in parallel with the CSS. -->
+<link rel="preload" as="image" href="assets/img/portrait.webp" type="image/webp" fetchpriority="high">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Masum",
+  "jobTitle": "Video Editor",
+  "description": "Premium video editor specialising in high-retention Reels and cinematic YouTube content.",
+  "sameAs": [
+    "https://www.instagram.com/visualsby.masumm",
+    "https://www.upwork.com/freelancers/~018937a82d80533983"
+  ]
+}
+</script>
 </head>
 <body>
-    <!-- Full page animated squares background -->
-    <canvas id="bgSquares"></canvas>
 
-    <!-- ===== CURSOR GLOW ===== -->
-    <div class="cursor-glow" id="cursorGlow"></div>
+<!-- Full-page animated squares background -->
+<canvas id="bgSquares" aria-hidden="true"></canvas>
 
-    <!-- ===== NAVIGATION ===== -->
-    <header class="nav" id="nav">
-        <div class="container nav__inner">
-            <a href="#hero" class="nav__logo" id="navLogo">MAS<span>UM</span></a>
-            <nav class="nav__menu" id="navMenu">
-                <a href="#hero" class="nav__link active">Home</a>
-                <a href="#showreel" class="nav__link">Showreel</a>
-                <a href="#about" class="nav__link">About</a>
-                <a href="#portfolio" class="nav__link">Portfolio</a>
-                <a href="#contact" class="nav__link nav__cta">Hire Me</a>
-            </nav>
-            <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ══════════ SVG SPRITE ══════════ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.09 12.9a1 1 0 0 0 .77 1.63h5.14v6.47a1 1 0 0 0 1.79.61l8.91-10.9a1 1 0 0 0-.77-1.63h-5.14V2.61A1 1 0 0 0 13 2Z"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M7 3v18M17 3v18M2 9h5M2 15h5M17 9h5M17 15h5"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2a10 10 0 1 0 0 20 2 2 0 0 0 1.6-3.2 2 2 0 0 1 1.6-3.2H18a4 4 0 0 0 4-4 10 10 0 0 0-10-9.6Z"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12h2M7 6v12M12 3v18M17 8v8M22 12h-2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.6-4.6a2 2 0 0 0-2.8 0L3 21"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91a9.82 9.82 0 0 0 1.34 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2Zm0 18.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 5.82 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.17 1.72 2.62 4.16 3.67.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.28Z"/></symbol>
+  <symbol id="i-upwork" viewBox="0 0 24 24"><path d="M18.56 5.53c-2.06 0-3.6 1.34-4.22 3.5-.96-1.44-1.69-3.17-2.12-4.62H9.75v5.57c0 1.1-.9 2-2 2s-2-.9-2-2V4.41H3.13v5.57a4.62 4.62 0 0 0 9.24.13c.34.66.75 1.36 1.24 2l-1.42 6.67h2.5l1.02-4.84c.9.57 1.93.92 3.06.92C21.2 14.86 23 12.72 23 10.1c0-2.61-1.8-4.57-4.44-4.57Zm0 6.85c-.86 0-1.7-.37-2.4-.96l.22-.85v-.03c.15-.9.65-2.41 2.18-2.41 1.15 0 2.08.93 2.08 2.08 0 1.18-.93 2.17-2.08 2.17Z"/></symbol>
+</svg>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+  <div class="shell nav__inner">
+    <a href="#top" class="nav__logo">MAS<span>UM</span></a>
+
+    <nav class="nav__menu" id="navMenu" aria-label="Primary">
+      <a href="#showreel" class="nav__link">Showreel</a>
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#process"  class="nav__link">Process</a>
+      <a href="#work"     class="nav__link">Work</a>
+      <a href="#pricing"  class="nav__link">Pricing</a>
+      <a href="#faq"      class="nav__link">FAQ</a>
+      <a href="#contact"  class="btn btn--primary btn--sm nav__cta">Start a project</a>
+    </nav>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="top">
+  <div class="hero__aurora hero__aurora--emerald" aria-hidden="true"></div>
+  <div class="hero__aurora hero__aurora--blue" aria-hidden="true"></div>
+  <div class="hero__grain" aria-hidden="true"></div>
+
+  <div class="shell hero__grid">
+    <div class="hero__copy">
+      <p class="pill reveal">
+        <span class="pill__dot"></span> Available for new projects
+      </p>
+
+      <h1 class="hero__title reveal" data-delay="1">
+        Editing that<br>
+        keeps people<br>
+        <span class="grad">watching.</span>
+      </h1>
+
+      <p class="hero__lead reveal" data-delay="2">
+        I'm <strong>Masum</strong> — I partner with coaches, creators and brands to craft
+        high-retention Reels and cinematic YouTube videos that build authority and drive growth.
+      </p>
+
+      <div class="hero__actions reveal" data-delay="3">
+        <a href="#work" class="btn btn--primary">
+          <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> View my work
+        </a>
+        <a href="#contact" class="btn btn--ghost">
+          Hire me <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+
+      <ul class="hero__trust reveal" data-delay="4">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Retention focused</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Direct communication</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Premium aesthetic</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual reveal" data-delay="2">
+      <div class="hero__halo" aria-hidden="true"></div>
+      <picture>
+        <source srcset="assets/img/portrait.webp" type="image/webp">
+        <img src="assets/img/portrait.png" alt="Masum, professional video editor"
+             class="hero__portrait" width="900" height="1200" fetchpriority="high" decoding="async">
+      </picture>
+
+      <div class="float-card float-card--tl">
+        <strong>50M+</strong><span>Views driven</span>
+      </div>
+      <div class="float-card float-card--br">
+        <strong>98%</strong><span>Success rate</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <dl class="stats reveal">
+      <div class="stats__item">
+        <dt class="stats__num" data-count="98" data-suffix="%">0%</dt>
+        <dd class="stats__label">Success rate</dd>
+      </div>
+      <div class="stats__item">
+        <dt class="stats__num" data-count="50" data-suffix="M+">0</dt>
+        <dd class="stats__label">Views driven</dd>
+      </div>
+      <div class="stats__item">
+        <dt class="stats__num" data-count="16" data-suffix="">0</dt>
+        <dd class="stats__label">Featured edits</dd>
+      </div>
+      <div class="stats__item">
+        <dt class="stats__num" data-count="3" data-suffix="">0</dt>
+        <dd class="stats__label">Service tiers</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ══════════ SHOWREEL ══════════ -->
+<section class="section section--alt" id="showreel">
+  <div class="shell">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> Showreel</p>
+      <h2 class="sec-title">See the work <span class="grad">in motion.</span></h2>
+      <p class="sec-lead">One reel, the whole pipeline — scripting, editing, sound design, colour and packaging.</p>
     </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
-        <div class="hero__glow hero__glow--1"></div>
-        <div class="hero__glow hero__glow--2"></div>
-        <div class="hero__noise"></div>
-        <div class="container hero__grid">
-            <div class="hero__content">
-                <div class="hero__pill anim" data-d="0">
-                    <span class="hero__dot"></span> Available for Projects
-                </div>
-                <h1 class="hero__title anim" data-d="1">
-                    Premium Video<br>Editing That <span class="txt-grad">Converts</span>
-                </h1>
-                <p class="hero__sub anim" data-d="2">
-                    I partner with coaches, creators, and brands to craft high-retention Reels 
-                    and cinematic YouTube videos that build authority and drive massive growth.
-                </p>
-                <div class="hero__btns anim" data-d="3">
-                    <a href="#showreel" class="btn btn--fill"><i class="fas fa-play"></i> Watch Showreel</a>
-                    <a href="#contact" class="btn btn--outline">Let's Discuss <i class="fas fa-arrow-right"></i></a>
-                </div>
+    <div class="reel reveal">
+      <div class="reel__glow" aria-hidden="true"></div>
 
-                <div class="hero__trust anim" data-d="4">
-                    <div class="trust-item"><i class="fas fa-crosshairs"></i> Retention Focused</div>
-                    <div class="trust-item"><i class="fas fa-comments"></i> Direct Communication</div>
-                    <div class="trust-item"><i class="fas fa-gem"></i> Premium Aesthetic</div>
-                </div>
-            </div>
-            <div class="hero__visual anim" data-d="2">
-                <div class="hero__img-glow"></div>
-                <img src="image.png" alt="Masum — Professional Video Editor" class="hero__img" width="440" height="580">
-            </div>
+      <div class="reel__frame">
+        <!-- `controls` + `preload="none"` means this works with zero JavaScript and
+             still downloads nothing until the visitor presses play. The decorative
+             cover below is layered on top only when JS is available. -->
+        <video class="reel__video" id="reelVideo"
+               controls playsinline preload="none"
+               poster="assets/img/showreel-poster.webp"
+               width="1920" height="1080">
+          <source src="assets/video/showreel.mp4" type="video/mp4">
+          Your browser cannot play this video.
+          <a href="assets/video/showreel.mp4">Download the showreel</a> instead.
+        </video>
+
+        <div class="reel__cover" id="reelCover">
+          <picture>
+            <source srcset="assets/img/showreel-poster.webp" type="image/webp">
+            <img src="assets/img/showreel-poster.jpg" alt="Masum showreel thumbnail"
+                 width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+
+          <button class="reel__play" id="reelPlay" type="button" aria-label="Play showreel, 43 seconds">
+            <span class="reel__ring" aria-hidden="true"></span>
+            <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg>
+          </button>
+
+          <!-- No caption chip here on purpose: the thumbnail already carries its
+               own "Professional video editing services" strip along the bottom,
+               and a second label collided with it. -->
+          <span class="reel__badge">0:43</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </section>
+<!-- ══════════ SERVICES ══════════ -->
+<section class="section" id="services">
+  <div class="shell">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> What I do</p>
+      <h2 class="sec-title">More than editing.<br><span class="grad">A complete growth engine.</span></h2>
+      <p class="sec-lead">My work starts before the first cut and continues until the video performs.</p>
+    </header>
 
-    <!-- ===== SHOWREEL ===== -->
-    <section class="showreel" id="showreel">
-        <div class="container">
-            <header class="sec-head anim-r">
-                <span class="sec-tag">Overview</span>
-                <h2 class="sec-title">The Showreel</h2>
-                <p class="sec-desc">A quick introduction to my cinematic style, workflow, and what I can do for your brand.</p>
-            </header>
-            <!-- Thumbnail-based player that opens YouTube on click -->
-            <div class="showreel__wrap anim-r">
-                <div class="showreel__glow"></div>
-                <div class="showreel__frame" id="showreelFrame" data-video-id="j9R2L7-sNeY">
-                    <img src="https://i.ytimg.com/vi/j9R2L7-sNeY/maxresdefault.jpg" 
-                         onerror="this.src='https://i.ytimg.com/vi/j9R2L7-sNeY/hqdefault.jpg'"
-                         alt="Showreel Thumbnail" class="showreel__thumb" loading="lazy">
-                    <button class="showreel__play-btn" aria-label="Play showreel video">
-                        <i class="fas fa-play"></i>
-                    </button>
-                </div>
-            </div>
+    <div class="bento">
+      <article class="card card--feature reveal">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-bolt"/></svg></div>
+        <h3>Reels &amp; Short Form</h3>
+        <p>High-energy vertical videos engineered for Instagram, TikTok and YouTube Shorts — built to survive the first three seconds.</p>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Fast-paced retention editing</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Dynamic custom captions</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Cinematic sound design</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Trend-aware transitions</li>
+        </ul>
+      </article>
+
+      <article class="card card--feature reveal" data-delay="1">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-film"/></svg></div>
+        <h3>Long Form &amp; YouTube</h3>
+        <p>Cinematic, story-driven editing for educational content, podcasts and talking-head videos that hold average view duration.</p>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Seamless B-roll storytelling</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Professional colour grading</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Pacing tuned for high AVD</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Strategic hook engineering</li>
+        </ul>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></div>
+        <h3>Colour Grading</h3>
+        <p>Consistent, filmic looks that make every upload feel unmistakably yours.</p>
+      </article>
+
+      <article class="card reveal" data-delay="3">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg></div>
+        <h3>Sound Design</h3>
+        <p>Cleaned dialogue, layered SFX and music beds mixed for clarity on phone speakers.</p>
+      </article>
+
+      <article class="card reveal" data-delay="4">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></div>
+        <h3>Motion Graphics</h3>
+        <p>Animated captions, lower thirds and kinetic type that carry the narrative.</p>
+      </article>
+
+      <article class="card reveal" data-delay="5">
+        <div class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg></div>
+        <h3>Thumbnails &amp; Packaging</h3>
+        <p>Title and thumbnail combinations designed to win the click before the edit even matters.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="section section--alt" id="process">
+  <div class="shell">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> How we work</p>
+      <h2 class="sec-title">From raw footage to<br><span class="grad">upload-ready.</span></h2>
+      <p class="sec-lead">A predictable process, so you always know exactly where your video stands.</p>
+    </header>
+
+    <ol class="process">
+      <li class="step reveal">
+        <span class="step__num">01</span>
+        <h3>Discovery</h3>
+        <p>We talk through your goals, audience and references. You send raw footage, brand assets and a short brief.</p>
+      </li>
+      <li class="step reveal" data-delay="1">
+        <span class="step__num">02</span>
+        <h3>The Edit</h3>
+        <p>I build the story — hook, structure, pacing — then layer in sound design, grading and motion graphics.</p>
+      </li>
+      <li class="step reveal" data-delay="2">
+        <span class="step__num">03</span>
+        <h3>Refine</h3>
+        <p>You review a timestamped first cut and leave notes. We iterate until every frame earns its place.</p>
+      </li>
+      <li class="step reveal" data-delay="3">
+        <span class="step__num">04</span>
+        <h3>Deliver</h3>
+        <p>Final export lands upload-ready, with thumbnails and packaging so you can publish the same day.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════ WORK ══════════ -->
+<section class="section" id="work">
+  <div class="shell">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> Selected work</p>
+      <h2 class="sec-title">The <span class="grad">portfolio.</span></h2>
+      <p class="sec-lead">Hover any card to preview. Click to watch the full edit with sound.</p>
+    </header>
+
+    <!-- ── Long form ── -->
+    <div class="work-head reveal">
+      <h3 class="work-head__title">YouTube Long Videos</h3>
+      <span class="work-head__count">8 edits</span>
+    </div>
+
+    <div class="work-grid work-grid--wide">
+      <!-- Cards are static so posters still render with JavaScript disabled. -->
+      <article class="work-card reveal" data-video="assets/video/long/1.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 1">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-1.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">01</span>
         </div>
-    </section>
-
-    <!-- ===== ABOUT ===== -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about__grid">
-                <div class="about__text">
-                    <span class="sec-tag anim-r">About</span>
-                    <h2 class="sec-title sec-title--left anim-r">The Professional<br>Standard</h2>
-                    <p class="about__p anim-r">I don't just cut footage; I engineer attention. In today's digital landscape, a video must be visually stunning, perfectly paced, and strategically structured to hold the viewer's eye.</p>
-                    <p class="about__p anim-r">I prioritize direct, professional relationships with my clients — especially on platforms like Upwork — ensuring absolute clarity, on-time delivery, and premium results.</p>
-                </div>
-                <div class="about__stats">
-                    <div class="stat anim-r">
-                        <h3 class="stat__num">98<span>%</span></h3>
-                        <p class="stat__label">Success Rate</p>
-                        <div class="stat__bar"><div class="stat__fill" data-w="98"></div></div>
-                    </div>
-                    <div class="stat anim-r">
-                        <h3 class="stat__num">50<span>M+</span></h3>
-                        <p class="stat__label">Views Driven</p>
-                        <div class="stat__bar"><div class="stat__fill" data-w="85"></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Specializations -->
-            <div class="specs">
-                <div class="spec anim-r" id="specReels">
-                    <div class="spec__icon"><i class="fas fa-bolt"></i></div>
-                    <h3 class="spec__title">Reels & Short Form</h3>
-                    <p class="spec__desc">High-energy vertical videos optimized for Instagram, TikTok, and YouTube Shorts.</p>
-                    <ul class="spec__list">
-                        <li><i class="fas fa-check"></i> Fast-Paced Retention Editing</li>
-                        <li><i class="fas fa-check"></i> Dynamic Custom Captions</li>
-                        <li><i class="fas fa-check"></i> Cinematic Sound Design</li>
-                        <li><i class="fas fa-check"></i> Trend-Aware Transitions</li>
-                    </ul>
-                </div>
-                <div class="spec anim-r" id="specLong">
-                    <div class="spec__icon"><i class="fas fa-film"></i></div>
-                    <h3 class="spec__title">Long Form & YouTube</h3>
-                    <p class="spec__desc">Cinematic, story-driven editing for educational content, podcasts, and talking-head videos.</p>
-                    <ul class="spec__list">
-                        <li><i class="fas fa-check"></i> Seamless B-Roll Storytelling</li>
-                        <li><i class="fas fa-check"></i> Professional Color Grading</li>
-                        <li><i class="fas fa-check"></i> Pacing for High AVD</li>
-                        <li><i class="fas fa-check"></i> Strategic Hook Engineering</li>
-                    </ul>
-                </div>
-            </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/2.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 2">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-2.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">02</span>
         </div>
-    </section>
-
-    <!-- ===== PORTFOLIO ===== -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <header class="sec-head anim-r">
-                <span class="sec-tag">Work</span>
-                <h2 class="sec-title">Selected Projects</h2>
-                <p class="sec-desc">Short-form and long-form content engineered for maximum engagement.</p>
-            </header>
-
-            <div class="tabs anim-r" id="tabs">
-                <button class="tab tab--on" data-t="long"><i class="fas fa-desktop"></i> Long Form</button>
-                <button class="tab" data-t="reels"><i class="fas fa-mobile-alt"></i> Reels</button>
-            </div>
-
-            <!-- Long Form Grid -->
-            <div class="grid grid--long grid--on" id="gridLong">
-                <article class="card card--h anim-r" data-vid="0sVdNHdhyLA" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/0sVdNHdhyLA/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/0sVdNHdhyLA/hqdefault.jpg'" alt="Cinematic Talking Head" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Cinematic Talking Head</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="IN_77MV4cXs" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/IN_77MV4cXs/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/IN_77MV4cXs/hqdefault.jpg'" alt="Educational Content Edit" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Educational Content Edit</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="pXmyAJKHBCg" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/pXmyAJKHBCg/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/pXmyAJKHBCg/hqdefault.jpg'" alt="Documentary Style" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Documentary Style Breakdown</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="d_RAetb9ViE" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/d_RAetb9ViE/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/d_RAetb9ViE/hqdefault.jpg'" alt="Business Case Study" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Business Case Study</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="wTJ47KaFKxo" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/wTJ47KaFKxo/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/wTJ47KaFKxo/hqdefault.jpg'" alt="YouTube Masterclass" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>YouTube Masterclass</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="CZrooxNP4ck" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/CZrooxNP4ck/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/CZrooxNP4ck/hqdefault.jpg'" alt="High-Retention Vlog" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>High-Retention Vlog</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="T51_MuS1jCs" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/T51_MuS1jCs/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/T51_MuS1jCs/hqdefault.jpg'" alt="Podcast Highlight" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Podcast Highlight Episode</h4><span>YouTube</span></div>
-                </article>
-                <article class="card card--h anim-r" data-vid="R7a1eCAMdfo" data-type="long">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/R7a1eCAMdfo/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/R7a1eCAMdfo/hqdefault.jpg'" alt="Brand Authority" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag"><i class="fas fa-clock"></i> Long</span></div>
-                    <div class="card__info"><h4>Brand Authority Video</h4><span>YouTube</span></div>
-                </article>
-            </div>
-
-            <!-- Reels Grid -->
-            <div class="grid grid--reels" id="gridReels">
-                <article class="card card--v anim-r" data-vid="_xSFEq5zvb8" data-type="short">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/_xSFEq5zvb8/hqdefault.jpg" alt="High-Retention Short" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
-                    <div class="card__info"><h4>High-Retention Short</h4><span>Reels & Shorts</span></div>
-                </article>
-                <article class="card card--v anim-r" data-vid="EiIyAG14uuU" data-type="short">
-                    <div class="card__thumb"><img src="https://i.ytimg.com/vi/EiIyAG14uuU/hqdefault.jpg" alt="Engaging Hook Reel" loading="lazy"><div class="card__over"><div class="card__play"><i class="fas fa-play"></i></div></div><span class="card__tag">Short</span></div>
-                    <div class="card__info"><h4>Engaging Hook Reel</h4><span>Reels & Shorts</span></div>
-                </article>
-            </div>
-
-
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/3.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 3">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-3.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">03</span>
         </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <header class="sec-head anim-r">
-                <span class="sec-tag">Contact</span>
-                <h2 class="sec-title">Ready to Elevate<br>Your Content?</h2>
-                <p class="sec-desc">Reach out directly via Upwork or Instagram to discuss your brand's vision.</p>
-            </header>
-            <div class="contact__grid">
-                <div class="contact__links">
-                    <a href="https://www.upwork.com/freelancers/~018937a82d80533983?mp_source=share" target="_blank" rel="noopener" class="cta-card anim-r" id="ctaUpwork">
-                        <div class="cta-card__icon"><i class="fas fa-briefcase"></i></div>
-                        <div><h4>Hire me on Upwork</h4><p>Direct Agency & Freelance Contracts</p></div>
-                        <i class="fas fa-arrow-right cta-card__arrow"></i>
-                    </a>
-                    <a href="https://www.instagram.com/visualsby.masumm?igsh=MWtwbTlidnExMTdnZw%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="cta-card cta-card--ig anim-r" id="ctaInsta">
-                        <div class="cta-card__icon cta-card__icon--ig"><i class="fab fa-instagram"></i></div>
-                        <div><h4>Follow on Instagram</h4><p>@visualsby.masumm</p></div>
-                        <i class="fas fa-arrow-right cta-card__arrow"></i>
-                    </a>
-                </div>
-                <div class="contact__box anim-r">
-                    <div class="contact__box-glow"></div>
-                    <h3>Let's Build Together</h3>
-                    <p>I am currently accepting new clients for one-off projects and long-term monthly retainers.</p>
-                    <a href="https://www.upwork.com/freelancers/~018937a82d80533983?mp_source=share" target="_blank" rel="noopener" class="btn btn--fill btn--wide" id="ctaMain">
-                        Start a Contract on Upwork <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/4.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 4">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-4.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-4.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">04</span>
         </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container footer__inner">
-            <a href="#hero" class="footer__logo">MAS<span>UM</span></a>
-            <div class="footer__socials">
-                <a href="https://www.instagram.com/visualsby.masumm?igsh=MWtwbTlidnExMTdnZw%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.upwork.com/freelancers/~018937a82d80533983?mp_source=share" target="_blank" rel="noopener" aria-label="Upwork"><i class="fas fa-briefcase"></i></a>
-            </div>
-            <p class="footer__copy">&copy; 2026 Masum Video Editing. All rights reserved.</p>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/5.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 5">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-5.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-5.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">05</span>
         </div>
-    </footer>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/6.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 6">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-6.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-6.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">06</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/7.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 7">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-7.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-7.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">07</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/long/8.mp4" data-orient="wide" tabindex="0" role="button" aria-label="Play long-form edit 8">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/long-8.webp" alt="" loading="lazy" width="1280" height="720">
+          <video class="work-card__preview" data-src="assets/video/preview/long-8.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">08</span>
+        </div>
+      </article>
+    </div>
 
+    <!-- ── Shorts ── -->
+    <div class="work-head work-head--spaced reveal">
+      <h3 class="work-head__title">Shorts</h3>
+      <span class="work-head__count">8 edits</span>
+    </div>
 
+    <div class="work-grid work-grid--tall">
+      <article class="work-card reveal" data-video="assets/video/short/1.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 1">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-1.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-1.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">01</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/2.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 2">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-2.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-2.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">02</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/3.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 3">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-3.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-3.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">03</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/4.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 4">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-4.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-4.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">04</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/5.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 5">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-5.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-5.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">05</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/6.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 6">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-6.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-6.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">06</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/7.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 7">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-7.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-7.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">07</span>
+        </div>
+      </article>
+      <article class="work-card reveal" data-video="assets/video/short/8.mp4" data-orient="tall" tabindex="0" role="button" aria-label="Play short-form edit 8">
+        <div class="work-card__media">
+          <img class="work-card__poster" src="assets/img/posters/short-8.webp" alt="" loading="lazy" width="720" height="1280">
+          <video class="work-card__preview" data-src="assets/video/preview/short-8.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <span class="work-card__play"><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="work-card__index">08</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- ══════════ PRICING ══════════ -->
+<section class="section section--alt" id="pricing">
+  <div class="shell">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> Work with me</p>
+      <h2 class="sec-title">Choose how we <span class="grad">team up</span></h2>
+      <p class="sec-lead">Every channel is different. Pick the tier that fits, and we'll shape a quote around your goals.</p>
+    </header>
+
+    <div class="tiers">
+      <article class="tier reveal">
+        <header class="tier__head">
+          <h3 class="tier__name">Silver</h3>
+          <p class="tier__desc">Perfect for testing the waters</p>
+          <p class="tier__price">$50<span class="tier__to">–</span>$100 <em>/ video</em></p>
+        </header>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> One video, fully edited</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Clean cuts &amp; captions</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Basic sound design</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 2 revision rounds</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Delivery-ready export</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost btn--wide">Get a quote</a>
+      </article>
+
+      <article class="tier tier--featured reveal" data-delay="1">
+        <span class="tier__badge">Most popular</span>
+        <header class="tier__head">
+          <h3 class="tier__name">Gold</h3>
+          <p class="tier__desc">For creators publishing consistently</p>
+          <p class="tier__price">$200<span class="tier__to">–</span>$300 <em>/ video</em></p>
+        </header>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Everything in Silver</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Advanced motion graphics</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Professional colour grading</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Cinematic sound design</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Custom thumbnail</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Priority delivery</li>
+        </ul>
+        <a href="#contact" class="btn btn--primary btn--wide">Get a quote</a>
+      </article>
+
+      <article class="tier reveal" data-delay="2">
+        <header class="tier__head">
+          <h3 class="tier__name">Platinum</h3>
+          <p class="tier__desc">Hands-off production for serious brands</p>
+          <p class="tier__price">$400<span class="tier__plus">+</span> <em>/ video</em></p>
+        </header>
+        <ul class="ticks">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Everything in Gold</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Creative direction &amp; scripting</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Complex VFX &amp; 3D elements</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Full channel packaging</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Dedicated communication channel</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost btn--wide">Get a quote</a>
+      </article>
+    </div>
+
+    <p class="tiers__note reveal">Final pricing depends on video length, complexity and turnaround. Longer or more involved edits sit at the upper end of each range.</p>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="section" id="faq">
+  <div class="shell shell--narrow">
+    <header class="sec-head reveal">
+      <p class="tag"><span class="pill__dot"></span> Questions</p>
+      <h2 class="sec-title">Before you <span class="grad">reach out</span></h2>
+    </header>
+
+    <div class="faq">
+      <details class="faq__item reveal">
+        <summary>
+          What do you need from me to get started?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>Raw footage, any brand assets you have (logos, fonts, colours), two or three reference videos you like, and a short brief on who the video is for. That's usually enough for me to start on the first cut.</p></div>
+      </details>
+
+      <details class="faq__item reveal">
+        <summary>
+          What's your turnaround time?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>It depends on length and complexity, so we agree a delivery date before any work starts. Shorts move fastest; long-form documentary-style edits take longer. Gold and Platinum tiers get priority in my queue.</p></div>
+      </details>
+
+      <details class="faq__item reveal">
+        <summary>
+          How many revisions are included?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>Silver includes two revision rounds. Gold and Platinum include more generous revision allowances — we'll confirm the exact terms in your quote before we begin.</p></div>
+      </details>
+
+      <details class="faq__item reveal">
+        <summary>
+          How do you deliver the final files?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>You get upload-ready exports via Google Drive, Dropbox or Frame.io — whichever you prefer. Thumbnails and packaging assets come in the same delivery. Project files are available on request.</p></div>
+      </details>
+
+      <details class="faq__item reveal">
+        <summary>
+          Do you take on monthly retainers?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>Yes. Most of my best work comes from ongoing relationships where I learn a channel's voice over time. Reach out and we'll structure a monthly arrangement around your publishing cadence.</p></div>
+      </details>
+
+      <details class="faq__item reveal">
+        <summary>
+          How does payment work?
+          <span class="faq__icon"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></span>
+        </summary>
+        <div class="faq__body"><p>I run contracts through Upwork, which protects both sides with escrow and a clear record of scope. If you'd rather work directly, message me on WhatsApp and we'll sort out something that works for you.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section" id="contact">
+  <div class="shell">
+    <div class="contact reveal">
+      <div class="contact__glow" aria-hidden="true"></div>
+
+      <p class="tag"><span class="pill__dot"></span> Ready when you are</p>
+      <h2 class="sec-title">Let's build something<br><span class="grad">worth watching.</span></h2>
+      <p class="sec-lead">Tell me about your content and your goals. I'll show you exactly how we get there.</p>
+
+      <div class="contact__actions">
+        <a href="https://wa.me/8801889216455" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp me
+        </a>
+        <a href="https://www.upwork.com/freelancers/~018937a82d80533983?mp_source=share" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
+          <svg class="icon" aria-hidden="true"><use href="#i-upwork"/></svg> Hire on Upwork
+        </a>
+      </div>
+
+      <div class="contact__chips">
+        <a href="https://wa.me/8801889216455" target="_blank" rel="noopener noreferrer" class="chip">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> +880 1889 216455
+        </a>
+        <a href="https://www.instagram.com/visualsby.masumm" target="_blank" rel="noopener noreferrer" class="chip">
+          <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> @visualsby.masumm
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="shell footer__inner">
+    <a href="#top" class="nav__logo">MAS<span>UM</span></a>
+
+    <nav class="footer__socials" aria-label="Social links">
+      <a href="https://www.instagram.com/visualsby.masumm" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+      </a>
+      <a href="https://www.upwork.com/freelancers/~018937a82d80533983?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+        <svg class="icon" aria-hidden="true"><use href="#i-upwork"/></svg>
+      </a>
+      <a href="https://wa.me/8801889216455" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+      </a>
+    </nav>
+
+    <p class="footer__copy">&copy; <span id="year">2026</span> Masum. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <div class="lightbox__backdrop" data-close></div>
+  <div class="lightbox__panel" id="lightboxPanel">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close video">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <video class="lightbox__video" id="lightboxVideo" controls playsinline preload="metadata"></video>
+  </div>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+</button>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
