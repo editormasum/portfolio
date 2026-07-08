@@ -508,30 +508,45 @@
   });
 })();
 window.addEventListener("load", () => {
-  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  setTimeout(async () => {
 
-  async function demoScroll() {
-    // Wait for page animations
-    await delay(1500);
+    async function smoothScrollTo(target, duration) {
+      const start = window.scrollY;
+      const distance = target - start;
+      const startTime = performance.now();
 
-    // Scroll to bottom smoothly
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth"
-    });
+      function easeInOut(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
 
-    // Wait until scrolling finishes
-    await delay(9000);
+      return new Promise(resolve => {
+        function animation(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
 
-    // Stay at the bottom
-    await delay(2000);
+          window.scrollTo(
+            0,
+            start + distance * easeInOut(progress)
+          );
 
-    // Scroll back to hero section
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          } else {
+            resolve();
+          }
+        }
 
-  demoScroll();
+        requestAnimationFrame(animation);
+      });
+    }
+
+    await smoothScrollTo(document.body.scrollHeight, 18000);
+
+    await new Promise(r => setTimeout(r, 3000));
+
+    await smoothScrollTo(0, 18000);
+
+  }, 3500);
 });
