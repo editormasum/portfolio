@@ -507,37 +507,3 @@
     }
   });
 })();
-window.addEventListener("load", () => {
-  setTimeout(() => {
-
-    let direction = 1;
-    let pause = false;
-
-    const speed = 0.15;
-
-    const timer = setInterval(() => {
-
-      if (pause) return;
-
-      window.scrollBy(0, direction * speed);
-
-      if (
-        direction === 1 &&
-        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5
-      ) {
-        pause = true;
-
-        setTimeout(() => {
-          direction = -1;
-          pause = false;
-        }, 3000);
-      }
-
-      if (direction === -1 && window.scrollY <= 0) {
-        clearInterval(timer);
-      }
-
-    }, 16);
-
-  }, 5000);
-});
