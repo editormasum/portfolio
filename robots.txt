@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Add a Sitemap line once you have a domain, e.g.
+# Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
+# A single-page site does not really need one — Google will find it.
