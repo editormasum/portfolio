@@ -508,45 +508,36 @@
   });
 })();
 window.addEventListener("load", () => {
-  setTimeout(async () => {
+  setTimeout(() => {
 
-    async function smoothScrollTo(target, duration) {
-      const start = window.scrollY;
-      const distance = target - start;
-      const startTime = performance.now();
+    let direction = 1;
+    let pause = false;
 
-      function easeInOut(t) {
-        return t < 0.5
-          ? 4 * t * t * t
-          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const speed = 0.15;
+
+    const timer = setInterval(() => {
+
+      if (pause) return;
+
+      window.scrollBy(0, direction * speed);
+
+      if (
+        direction === 1 &&
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 5
+      ) {
+        pause = true;
+
+        setTimeout(() => {
+          direction = -1;
+          pause = false;
+        }, 3000);
       }
 
-      return new Promise(resolve => {
-        function animation(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
+      if (direction === -1 && window.scrollY <= 0) {
+        clearInterval(timer);
+      }
 
-          window.scrollTo(
-            0,
-            start + distance * easeInOut(progress)
-          );
+    }, 16);
 
-          if (progress < 1) {
-            requestAnimationFrame(animation);
-          } else {
-            resolve();
-          }
-        }
-
-        requestAnimationFrame(animation);
-      });
-    }
-
-    await smoothScrollTo(document.body.scrollHeight, 18000);
-
-    await new Promise(r => setTimeout(r, 3000));
-
-    await smoothScrollTo(0, 18000);
-
-  }, 3500);
+  }, 5000);
 });
